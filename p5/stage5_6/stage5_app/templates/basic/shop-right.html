@@ -1,0 +1,957 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<html class="no-js">
+<head>
+  <title>Title</title>
+  <meta charset="utf-8">
+  <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <![endif]-->
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css" id="color-switcher-link">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  
+  <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <!--[if lt IE 9]>
+      <div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+  <![endif]-->
+  
+  <div class="preloader">
+    <div class="preloader_content loading">
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+    </div>
+  </div>
+
+<!-- search modal -->
+<div class="modal" tabindex="-1" aria-labelledby="search_modal" id="search_modal">
+  <div class="widget widget_search">
+    <form method="get" class="searchform form-inline" action="">
+      <div class="form-group">
+        <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
+      </div>
+      <button type="submit" class="theme_button">Search</button>
+    </form>
+  </div>
+</div>
+
+<!-- wrappers for visual page editor and boxed version of template -->
+<div id="canvas">
+<div id="box_wrapper">
+
+<!-- template sections -->
+<div class="page_topline2 ls">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <p class="social-networks__title">Social Networks:</p>
+        <ul class="social-networks__list">
+          <li><a href="#"><i class="rt-icon2-facebook"></i></a></li>
+          <li><a href="#"><i class="rt-icon2-twitter"></i></a></li>
+          <li><a href="#"><i class="rt-icon2-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <ul class="inline-dropdown drop-list inline-block">
+          <li class="dropdown login-dropdown my-account">
+            <a class="header-button" id="login" data-target="#" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="flaticon-user"></i>
+              {% if session.logged_in  %}
+              <a class="header-button">Hello   {{session.username}}</a>
+              {% endif %}
+            </a>
+          </li>
+          <li class="dropdown search-modal">
+            <a href="#" class="search_modal_button header-button">
+              <i class="flaticon-search"></i>
+            </a>
+          </li>
+          <li class="dropdown cart-dropdown">
+            <a class="header-button" id="cart" data-target="#" href="" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+              <i class="flaticon-basket"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="cart">
+              
+              <div class="widget widget_shopping_cart">
+  
+  <div class="widget_shopping_cart_content">
+    
+  </div>
+</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="page_header header_white floating_logo columns_padding_0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <a href="./" class="logo logo_image">
+          <img src="images/logo.png" alt="">
+        </a>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-6 text-align__right">
+        <!-- main nav start -->
+<nav class="mainmenu_wrapper">
+  <ul class="mainmenu nav sf-menu">
+    <li><a href="index.html">Home</a></li>
+	<li><a href="shop-right">Shop</a></li>
+	<li><a href="product-right">Single Product</a></li>
+	<li><a href="cart-right">Shopping Cart</a></li>
+	<li><a href="checkout-right">Checkout</a></li>
+    {% if session.logged_in  %}
+    <li><a href="logout">Logout</a></li>
+    {% else  %}
+	<li><a href="register">Registration</a></li>
+    {% endif  %}
+  </ul>
+</nav>
+<!-- eof main nav -->
+        <span class="toggle_menu"><span></span></span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="breadcrumbs-01">
+  <div class="page_breadcrumbs ls ms">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-breadcrumbs__wrapper">
+            <h1 class="page-breadcrumbs__title">Products</h1>
+            <ul class="breadcrumb">
+              <li><a href="">HomePage</a></li>
+              <li><a href="#">Shop</a></li>
+              <li class="active">Products</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ls ls section_padding_top_100 section_padding_bottom_75 columns_padding_25">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7 col-md-8 col-lg-8">
+        <div class="storefront-sorting clearfix"> 
+          <form class="form-inline">
+            <div class="form-group">
+              <select class="form-control orderby" name="orderby" id="orderby">
+                <option value="menu_order" selected>12 items/pages</option>
+                <option value="popularity">Popularity</option>
+                <option value="rating">Rating</option>
+                <option value="date">Newness</option>
+                <option value="price">Low To High</option>
+                <option value="price-desc">High To Low</option>
+              </select>
+              
+              <select class="form-control orderby" name="orderby" id="orderby_2">
+                <option value="menu_order" selected>Name: A to Z</option>
+                <option value="popularity">Popularity</option>
+                <option value="rating">Rating</option>
+                <option value="date">Newness</option>
+                <option value="price">Low To High</option>
+                <option value="price-desc">High To Low</option>
+              </select>
+            </div>
+            <div class="form-group toggle-wrapper">
+              <a href="#" id="toggle_shop_view" class=""></a>
+            </div>
+          </form>
+        </div>
+        <div class="columns-2">
+          <ul id="products" class="products list-unstyled grid-view">
+            <li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-01.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Necklace</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Suspendisse nisi turpis, puli et dictum vel ac pharetra. </a>
+      </h3>
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$187.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-02.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Necklace</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Aenean convallis eros in metus posuere, id rhoncus. </a>
+      </h3>
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$89.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-03.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Knitted items</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Donec auctor mi egestas, condimentum. </a>
+      </h3>
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$177.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-04.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Necklace</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Morbi porttitor metus volutpat, maximus ante.</a>
+      </h3>
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$363.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-05.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Bracelets</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Pellentesque habitant morbi tristique senectus.</a>
+      </h3>
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$98.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-06.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Knitted items</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Phasellus at massa eget mauris sagittis.</a>
+      </h3>
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$87.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-07.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Bracelets</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Sed sem tellus, consectetur eget fringilla.</a>
+      </h3> 
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$68.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-08.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Necklace</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Suspendisse vulputate et tortor nec.</a>
+      </h3> 
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$345.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-09.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Knitted items</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Phasellus at massa eget mauris sagittis.</a>
+      </h3> 
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$87.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-10.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Bracelets</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Sed sem tellus, consectetur eget fringilla.</a>
+      </h3> 
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$68.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-11.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Necklace</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Duis ut mi quis risus iaculis pellentesque.</a>
+      </h3> 
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$192.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+<li class="shop-item product type-product">
+  <div class="side-item">
+    <figure class="item-media">
+      <a href="product-right.html">
+        <img src="images/shop/shop_img-12.jpg" alt="">
+      </a>
+    </figure>   
+    <div class="shop-item__content">
+      <ul class="shop-item__meta-list">
+        <li>
+          <a class="shop-item__meta-tag" href="#">Necklace</a>
+        </li>
+        <li>
+          <div class="star-rating" title="Rated 4.00 out of 5">
+            <span style="width:80%">
+              <strong class="rating">4.00</strong> out of 5
+            </span>
+          </div>
+        </li>
+      </ul>
+      <h3 class="shop-item__title">
+        <a href="product-right.html">Curabitur congue nisi ipsun id sodales diam iaculis ut.</a>
+      </h3> 
+      <p class="shop-item__desc">
+        Aliquam sollicitudin neque in ante pretium tincidunt. Etiam volutpat ex a dolor gravida convallis...
+      </p>
+      <div class="shop-item__block">
+        <a href="#" class="shop-item__button">Add to cart</a>
+        <span class="price">
+          <span>
+            <span class="amount">$146.00</span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+          </ul>
+        </div> <!-- eof .columns-* -->
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <ul class="pagination">
+  <li class="active"><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">...</a></li>
+  <li><a href="#">54</a></li>
+</ul>
+          </div>
+        </div>
+      </div> <!--eof .col-sm-8 (main content)-->
+      
+      <!-- sidebar -->
+      <aside class="col-sm-5 col-md-3 col-lg-3">
+        <div class="sidebar__wrapper">
+  <div class="ls">
+    <div class="widget widget_search">
+  <h3 class="widget-title"><span>Search</span></h3>
+  <form method="get" class="searchform form-inline" action="">
+    <div class="form-group">
+      <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Search...">
+    </div>
+    <button type="submit" class="theme_button">Search</button>
+  </form>
+</div>
+  </div>
+  <div class="ls">
+    <div class="widget widget_price_filter"> 
+  <h3 class="widget-title"><span>Price Filter</span></h3>
+  <!-- price slider -->
+  <form method="get" action="" class="form-inline widget_price_filter-wrapper">
+    <p class="widget_price__text-info">Drag slider to change the price range</p>
+    <div class="slider-range-price"></div>
+    <div class="price__controls">
+    <label class="slider_price_min-left" for="slider_price_min">
+      <input type="text" class="slider_price_min form-control text-center" id="slider_price_min" readonly>
+    </label>
+    <label class="slider_price_min-right" for="slider_price_max">
+      <input type="text" class="slider_price_max form-control text-center" id="slider_price_max" readonly>
+    </label>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="theme_button small_button color1">Filter</button>
+    </div>
+  </form>
+</div>
+  </div>
+  <div class="ls">
+    <div class="widget widget_products widget_popular_entries">
+  <h3 class="widget-title"><span>Products</span></h3>
+  <ul class="media-list">
+    <li class="media">
+      <a class="media-left" href="product-right.html">
+        <img class="media-object" src="images/shop/01.jpg" alt="">
+      </a>
+      <div class="media-body">
+        <h3>
+          <a href="product-right.html">Rebum stet clita kasd lorem ipsum dolor</a>
+        </h3>
+        <div class="star-rating" title="Rated 4.50 out of 5">
+          <span style="width:90%">
+            <strong class="rating">4.50</strong> out of 5
+          </span>
+        </div>
+        <a href="#" rel="nofollow" class="add_to_cart_button">
+          <i class="rt-icon2-basket"></i>
+        </a>
+        <span class="price">
+          <ins>
+            <span class="amount">$299.00</span>
+          </ins>
+        </span>
+      </div>
+    </li>
+    <li class="media">
+      <a class="media-left" href="product-right.html">
+        <img class="media-object" src="images/shop/02.jpg" alt="">
+      </a>
+      <div class="media-body">
+        <h3>
+          <a href="product-right.html">Rebum stet clita kasd sit amet</a>
+        </h3>
+        <div class="star-rating" title="Rated 3.50 out of 5">
+          <span style="width:70%">
+            <strong class="rating">3.50</strong> out of 5
+          </span>
+        </div>
+        <a href="#" rel="nofollow" class="add_to_cart_button">
+          <i class="rt-icon2-basket"></i>
+        </a>
+        <span class="price">
+          <del>
+            <span class="amount">$269.00</span>
+          </del> 
+          <ins>
+            <span class="amount">$239.00</span>
+          </ins>
+        </span>
+      </div>
+    </li>
+    <li class="media">
+      <a class="media-left" href="product-right.html">
+        <img class="media-object" src="images/shop/03.jpg" alt="">
+      </a>
+      <div class="media-body">
+        <h3>
+          <a href="product-right.html">Lorem stet clita kasd</a>
+        </h3>
+        <div class="star-rating" title="Rated 2.50 out of 5">
+          <span style="width:50%">
+            <strong class="rating">2.50</strong> out of 5
+          </span>
+        </div>
+        <a href="#" rel="nofollow" class="add_to_cart_button">
+          <i class="rt-icon2-basket"></i>
+        </a>
+        <span class="price">
+          <ins>
+            <span class="amount">$2.00</span>
+          </ins>
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class="ls">
+    <div class="widget widget_tag_cloud widget_product_tag_cloud">
+  <h3 class="widget-title"><span>Size</span></h3>
+  <div class="tagcloud">
+    <a href="#" title="">XS</a>
+    <a href="#" title="">S</a>
+    <a href="#" title="">M</a>
+    <a href="#" title="">L</a>
+    <a href="#" title="">XL</a>
+    <a href="#" title="">XXL</a>
+  </div>
+</div>
+  </div>
+  <div class="ls">
+    <div class="widget widget_layered_nav widget_categories">
+  <h3 class="widget-title"><span>Attributes</span></h3>
+  <ul class="list-unstyled greylinks">
+    <li>
+      <a href="shop-right.html" class="white">White</a>
+      <span class="count highlight">(3)</span>
+    </li>
+    <li>
+      <a href="shop-right.html" class="grey">Grey</a> 
+      <span class="count highlight">(2)</span></li>
+    <li>
+      <a href="shop-right.html" class="darkgrey">Darkgrey</a>
+      <span class="count highlight">(12)</span>
+    </li>
+    <li>
+      <a href="shop-right.html" class="black">Black</a>
+      <span class="count highlight">(15)</span>
+    </li>
+    <li>
+      <a href="shop-right.html" class="darkblue">Darkblue</a> 
+      <span class="count highlight">(25)</span>
+    </li>
+  </ul>
+</div>
+  </div>
+  <div class="ls">
+    <div class="widget widget_layered_nav">
+  <h3 class="widget-title"><span>Color</span></h3>
+  <ul class="list-unstyled color-filters">
+    <li>
+      <a href="shop-right.html" data-background-color="#cacaca">White</a>
+      <span class="count grey">(12)</span>
+    </li>
+    <li>
+      <a href="shop-right.html" data-background-color="#67676a">Grey</a> 
+      <span class="count grey">(52)</span></li>
+    <li>
+      <a href="shop-right.html" data-background-color="#1b1b19">Darkgrey</a>
+      <span class="count grey">(31)</span>
+    </li>
+    <li>
+      <a href="shop-right.html" data-background-color="#255a8b">Black</a>
+      <span class="count grey">(24)</span>
+    </li>
+    <li>
+      <a href="shop-right.html" data-background-color="#0b8abf">Darkblue</a> 
+      <span class="count grey">(16)</span></li>
+    <li>
+      <a href="shop-right.html" data-background-color="#bc1624">Red</a>
+      <span class="count grey">(5)</span>
+    </li>
+    <li>
+      <a href="shop-right.html" data-background-color="#4b0082">Purpule</a>
+      <span class="count grey">(8)</span>
+    </li>
+  </ul>
+</div>
+  </div>
+</div> 
+      </aside> <!-- eof aside sidebar -->
+    </div>
+  </div>
+</div>
+
+<footer class="page_footer ds ms">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-12 footer-block__01 to_animate decoration__line_l offset_padding_top_90 offset_padding_bottom_85" >
+        <div class="widget widget_text page-footer__logo">
+          <p class="page-footer__logo-wrapper"><img src="images/logo_bottom.png" alt=""></p>
+          <p>Suspendisse dictum porttitor bibendum. Fusce eget lacus id quam tincidunt mattis. Etiam fringilla felis rhoncus, volutpat dui nec, eleifend turpis.  Mauris posuere urna ac elementum.</p>
+        </div>
+        <div class="widget widget__payment"> 
+          <h3 class="widget__payment-title">Payment</h3>
+          <div class="big">
+            <a href="#"><i class="fa fa-cc-visa"></i></a>
+            <a href="#"><i class="fa fa-cc-mastercard"></i></a>
+            <a href="#"><i class="fa fa-cc-discover"></i></a>
+            <a href="#"><i class="fa fa-cc-amex"></i></a>
+            <a href="#"><i class="fa fa-cc-paypal"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-7 col-sm-12 footer-block__02 to_animate decoration__line_r offset_padding_top_90 offset_padding_bottom_85 horizontal_offset_padding_40">
+        <!-- mailchimp -->
+        <div class="widget widget_mailchimp">
+  <h3 class="widget_mailchimp-title">Newsletter</h3>
+  <p class="widget_mailchimp__text">Subscribe to our latest news to be updated. We promise not to spam!</p>
+  <form class="signup form-inline" action="" method="get">
+    <div class="form-group">
+      <input name="email" type="email" class="mailchimp_email form-control" placeholder="Email address">
+    </div>
+    <button type="submit" class="theme_button">Subscribe</button>
+    <div class="response"></div>
+  </form>
+</div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <!-- footer navigation -->
+            <div class="widget widget_nav_menu greylinks">
+              <h3 class="widget-title">My Account</h3>
+               <ul class="menu">
+                <li class="">
+                  <a href="#">My Account</a>
+                </li>
+                <li class="">
+                  <a href="#">My Fashion</a>
+                </li>
+                <li class="">
+                  <a href="#">Login</a>
+                </li>
+                <li class="">
+                  <a href="#">Register</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <!-- shopping guide -->
+            <div class="widget widget_nav_menu greylinks">
+              <h3 class="widget-title">Shopping Guide</h3>
+              <ul class="menu">
+                <li class="">
+                  <a href="#">Checkout</a>
+                </li>
+                <li class="">
+                  <a href="#">Cart</a>
+                </li>
+                <li class="">
+                  <a href="#">Contact Usy</a>
+                </li>
+                <li class="">
+                  <a href="#">Blog</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <!-- contact us -->
+            <div class="widget widget_nav_menu greylinks">
+              <h3 class="widget-title">Contact Us</h3>
+              <ul class="menu">
+                <li class="">
+                  <a href="#">About Us</a>
+                </li>
+                <li class="">
+                  <a href="#">Blog</a>
+                </li>
+                <li class="">
+                  <a href="#">Search</a>
+                </li>
+                <li class="">
+                  <a href="#">Sitemap</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="page_copyright ds table_section section_padding_20">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center text-lg-left">
+        <p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- eof #box_wrapper -->
+</div><!-- eof #canvas -->
+
+ 
+    <script src="js/compressed.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

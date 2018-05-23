@@ -1,0 +1,130 @@
+<!doctype html>
+<div id="canvas">
+    <div id="box_wrapper">
+
+        <!-- template sections -->
+        <div class="page_topline2 ls">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <p class="social-networks__title">Social Networks:</p>
+                        <ul class="social-networks__list">
+                            <li><a href="#"><i class="rt-icon2-facebook"></i></a></li>
+                            <li><a href="#"><i class="rt-icon2-twitter"></i></a></li>
+                            <li><a href="#"><i class="rt-icon2-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <ul class="inline-dropdown drop-list inline-block">
+                            {% if not session.logged_in %}
+                            <a class="header-button" id="login" data-target="#" href="#">
+                                <li class="dropdown login-dropdown my-account">
+                                    <a class="header-button" id="login" data-target="#" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="flaticon-user"></i>
+                                        <span>My Account</span>
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="login">
+                                        <p>
+                                        <strong class="grey">If you have an account, please log in:</strong>
+                                        </p>
+                                        <form action="login" method="POST">
+                                            <div class="form-group">
+                                                <label for="username">Username</label>
+                                                <input type="text" class="form-control" id="login_email" name="username">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="login_password">Password</label>
+                                                <input type="password" class="form-control" id="login_password" name="password">
+                                            </div>
+                                            <button type="Submit" class="theme_button color1">
+                                                Log in
+                                            </button>
+                                            <a href="register.html" class="theme_button color2">Register</a>
+                                        </form>
+                                        <div class="greylinks topmargin_20">
+                                            <a href="register.html">Forgot Your Password?</a>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% else %}
+                                <a class="header-button" id="login" data-target="#" href="">
+                                    <li class="dropdown login-dropdown my-account">
+                                        <a class="header-button" id="login" data-target="#" href="/my_page" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="flaticon-user"></i>
+                                            <a href="my_page">Hello  {{session.username}}</span>
+                                            </a>
+                                    </li>
+
+                                    <li class="dropdown login-dropdown my-account">
+                                        <a class="header-button" id="login" data-target="#" href="/logout" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="flaticon-user"></i>
+                                            <a href="logout">logout</span>
+                                            </a>
+                                    </li>
+                                    {% endif %}
+                                    <li class="dropdown search-modal">
+                                        <a href="#" class="search_modal_button header-button">
+                                            <i class="flaticon-search"></i>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown cart-dropdown">
+                                        <a class="header-button" id="cart" data-target="#" href="" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+                                            <i class="flaticon-basket"></i>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="cart">
+                                            <span class="grey">Recently added item(s)</span>
+                                            <div class="widget widget_shopping_cart">
+
+                                                <div class="widget_shopping_cart_content">
+                                                    <ul class="cart_list product_list_widget media-list darklinks">
+                                                        <li class="media">
+                                                            <div class="media-left media-middle">
+                                                                <a href="product-right.html">
+                                                                    <img src="images/shop/01.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="media-body media-middle">
+                                                                <h4>
+                                                                    <a href="product-right.html">Stet clitad gubergren</a>
+                                                                </h4>
+                                                                <span class="quantity">1 × <span class="amount">$90</span></span>
+                                                            </div>
+                                                            <div class="media-body media-middle">
+                                                                <a href="#" class="remove" title="Remove this item">
+                                                                    <i class="rt-icon2-trash highlight"></i>
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                        <li class="media">
+                                                            <div class="media-left media-middle">
+                                                                <a href="product-right.html">
+                                                                    <img src="images/shop/02.jpg" alt="">
+                                                                </a>
+                                                            </div>
+                                                            <div class="media-body media-middle">
+                                                                <h4>
+                                                                    <a href="product-right.html">Takimata san bctus</a>
+                                                                </h4>
+                                                                <span class="quantity">1 × <span class="amount">$90</span></span>
+                                                            </div>
+                                                            <div class="media-body media-middle">
+                                                                <a href="#" class="remove" title="Remove this item">
+                                                                    <i class="rt-icon2-trash highlight"></i>
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                    </ul><!-- end product list -->
+                                                    <p class="total"><span class="grey">Cart Subtotal: <span class="amount">$180</span></span></p>
+                                                    <p class="buttons">
+                                                    <a href="cart-right.html" class="theme_button color1">View All</a>
+                                                    <a href="checkout-right.html" class="theme_button">Checkout</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>

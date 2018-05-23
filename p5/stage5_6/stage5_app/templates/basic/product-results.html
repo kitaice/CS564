@@ -1,0 +1,488 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<html class="no-js">
+<head>
+  <title>Search Results</title>
+  <meta charset="utf-8">
+  <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <![endif]-->
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}" id="color-switcher-link">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  
+  <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+  <!--[if lt IE 9]>
+      <div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+  <![endif]-->
+  
+  <div class="preloader">
+    <div class="preloader_content loading">
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+    </div>
+  </div>
+
+<!-- search modal -->
+<div class="modal" tabindex="-1" aria-labelledby="search_modal" id="search_modal">
+  <div class="widget widget_search">
+    <form method="get" class="searchform form-inline" action="">
+      <div class="form-group">
+        <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
+      </div>
+      <button type="submit" class="theme_button">Search</button>
+    </form>
+  </div>
+</div>
+
+<!-- wrappers for visual page editor and boxed version of template -->
+<div id="canvas">
+<div id="box_wrapper">
+
+<!-- template sections -->
+<div class="page_topline2 ls">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <p class="social-networks__title">Social Networks:</p>
+        <ul class="social-networks__list">
+          <li><a href="#"><i class="rt-icon2-facebook"></i></a></li>
+          <li><a href="#"><i class="rt-icon2-twitter"></i></a></li>
+          <li><a href="#"><i class="rt-icon2-google-plus"></i></a></li>
+        </ul>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <ul class="inline-dropdown drop-list inline-block">
+          <li class="dropdown login-dropdown my-account">
+            <a class="header-button" id="login" data-target="#" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="flaticon-user"></i>
+              {% if session.logged_in  %}
+              <a class="header-button">Hello   {{session.username}}</a>
+              {% endif %}
+            </a>
+          </li>
+          <li class="dropdown search-modal">
+            <a href="#" class="search_modal_button header-button">
+              <i class="flaticon-search"></i>
+            </a>
+          </li>
+          <li class="dropdown cart-dropdown">
+            <a class="header-button" id="cart" data-target="#" href="" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+              <i class="flaticon-basket"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="cart">
+              <div class="widget widget_shopping_cart">
+  
+  <div class="widget_shopping_cart_content">
+    
+  </div>
+</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="page_header header_white floating_logo columns_padding_0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <a href="./" class="logo logo_image">
+          <img src="images/logo.png" alt="">
+        </a>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-6 text-align__right">
+        <!-- main nav start -->
+<nav class="mainmenu_wrapper">
+  <ul class="mainmenu nav sf-menu">
+    <li><a href="index.html">Home</a></li>
+	<li><a href="shop-right">Shops</a></li>
+    {% if session.is_operator %}
+    <li><a href="insert" style="color:red">Add Item</a></li>
+    {% else %}
+	<li><a href="cart-right">Shopping Cart</a></li>
+	<li><a href="checkout-right">Checkout</a></li>
+    {% endif %}
+    {% if session.logged_in  %}
+    <li><a href="logout">Logout</a></li>
+    {% else  %}
+	<li><a href="register">Registration</a></li>
+    {% endif  %}
+  </ul>
+</nav>
+<!-- eof main nav -->
+        <span class="toggle_menu"><span></span></span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="breadcrumbs-01">
+  <div class="page_breadcrumbs ls ms">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-breadcrumbs__wrapper">
+              <h2 class="total">Search Results</h1>
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="/shop-indi?sid={{session.sid}}">Shop</a></li>
+              <li class="active">Products</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+            <div class="col-lg-12 toggle_menu--position">
+                <div class="main-nav__wrapper page_header">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <ul class="mainmenu nav sf-menu">
+                            {% for message in messages %}
+                                <h2 class="total" style="color:red">{{ message }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                    </div>
+            </div>
+    </div>           
+</div>
+
+<div class="ls ls section_padding_top_100 section_padding_bottom_75 columns_padding_25">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-7 col-md-8 col-lg-8">
+        <div class="storefront-sorting clearfix"> 
+          <form class="form-inline">
+            <div class="form-group">
+            </div>
+            <div class="form-group toggle-wrapper">
+              <a href="#" id="toggle_shop_view" class=""></a>
+            </div>
+          </form>
+        </div>
+{% if session.datasize < 1 %}
+<div class="columns-2">
+  <ul id="products" class="products list-unstyled grid-view">
+    <li class="shop-item product type-product">
+       <div class="side-item">
+        <div class="shop-item__content">
+          <ul class="shop-item__meta-list">
+            <li>
+            </li>
+            <li>
+            </li>
+          </ul>
+          <div class="shop-item__block">
+                        <h3 class="total">No items Found</p>
+          </div>
+        </div>
+      </div>
+    </li>
+{% else %}
+<div class="columns-2">
+  <ul id="products" class="products list-unstyled grid-view">
+    <li class="shop-item product type-product">
+       <div class="side-item">
+        <figure class="item-media">
+          <a href="product?iid={{session.f_item['IID']}}">
+              <div class="picture">
+              {% if session.f_item['imageURL'] != "" %}
+                <img src="{{session.f_item['imageURL']}}" alt="">
+              {% else %}
+                <img src="images/shop/noimage.jpg" alt="">
+              {% endif  %}
+              </div>
+          </a>
+        </figure>   
+        <div class="shop-item__content">
+          <ul class="shop-item__meta-list">
+            <li>
+                <a class="shop-item__meta-tag" href="">{{session.f_item['Brand']}}</a>
+            </li>
+            <li>
+              <div class="star-rating" title="Rated 4.00 out of 5">
+                <span style="width:80%">
+                  <strong class="rating">4.00</strong> out of 5
+                </span>
+              </div>
+            </li>
+          </ul>
+          <h3 class="shop-item__title">
+              <a href="product?iid={{session.f_item['IID']}}">{{session.f_item['Name']}}</a>
+          </h3>
+          <p class="shop-item__desc">
+            {{session.f_item['Description']}}
+          </p>
+          <div class="shop-item__block">
+              <a href="add-to-cart?iid={{session.f_item['IID']}}" class="shop-item__button">Add to cart</a>
+            <span class="price">
+              <span>
+                  <span class="amount">{{session.f_item['Price']}}</span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+{% for item in pagedata %}
+    <li class="shop-item product type-product">
+      <div class="side-item">
+        <figure class="item-media">
+          <a href="product?iid={{item['IID']}}">
+              <div class="picture">
+              {% if item['imageURL'] != "" %}
+                <img src="{{item['imageURL']}}" alt="">
+              {% else %}
+                <img src="images/shop/noimage.jpg" alt="">
+              {% endif  %}
+              </div>
+          </a>
+        </figure>   
+        <div class="shop-item__content">
+          <ul class="shop-item__meta-list">
+            <li>
+                <a class="shop-item__meta-tag" href="#">{{item['Brand']}}</a>
+            </li>
+            <li>
+              <div class="star-rating" title="Rated 4.00 out of 5">
+                <span style="width:80%">
+                  <strong class="rating">4.00</strong> out of 5
+                </span>
+              </div>
+            </li>
+          </ul>
+          <h3 class="shop-item__title">
+              <a href="product?iid={{item['IID']}}">{{item['Name']}}</a>
+          </h3>
+          <p class="shop-item__desc">
+            {{item['Description']}}
+          </p>
+          <div class="shop-item__block">
+              <a href="add-to-cart?iid={{item['IID']}}" class="shop-item__button">Add to cart</a>
+            <span class="price">
+              <span>
+                  <span class="amount">{{item['Price']}}</span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <ul class="pagination">
+    {% if prevpage > 0  %}
+    <li><a href="product-result?page_no={{prevpage}}"><</a></li>
+    {% endif  %}
+    <li class="active"><a href="">{{session.page_no}}</a></li>
+    {% if nextpage > 0  %}
+    <li><a href="product-result?page_no={{nextpage}}">></a></li>
+    {% endif  %}
+
+</ul>
+{% endif  %}
+
+          </ul>
+        </div> <!-- eof .columns-* -->
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <ul class="pagination">
+</ul>
+          </div>
+        </div>
+      </div> <!--eof .col-sm-8 (main content)-->
+      
+      <!-- sidebar -->
+      <aside class="col-sm-5 col-md-3 col-lg-3">
+        <div class="sidebar__wrapper">
+  <div class="ls">
+    <div class="widget widget_search">
+  <h3 class="widget-title"><span>Search</span></h3>
+  <form method="get" class="searchform form-inline" action="">
+    <div class="form-group">
+      <input id="widget-search" type="text" value="" name="search" class="form-control" placeholder="Search...">
+    </div>
+    <button type="submit" class="theme_button">Search</button>
+  </form>
+</div>
+  </div>
+  <div class="ls">
+    <div class="widget widget_price_filter"> 
+  <h3 class="widget-title"><span>Price Filter</span></h3>
+  <!-- price slider -->
+  <form method="POST" action="prod-filter" class="form-inline widget_price_filter-wrapper">
+        {% if session['price_l'] %}
+        <input type="hidden" id="prev_slider_min" value="{{session['price_l']}}">
+        <input type="hidden" id="prev_slider_max" value="{{session['price_h']}}">
+        {% else %}
+        <input type="hidden" id="prev_slider_min" value="150">
+        <input type="hidden" id="prev_slider_max" value="300">
+        {% endif %}
+    <p class="widget_price__text-info">Drag slider to change the price range</p>
+    <div class="slider-range-price"></div>
+    <div class="price__controls">
+    <label class="slider_price_min-left" for="slider_price_min">
+      <input type="text" name="lower" class="slider_price_min form-control text-center" id="slider_price_min" readonly>
+    </label>
+    <label class="slider_price_min-right" for="slider_price_max">
+      <input type="text" name="higer" class="slider_price_max form-control text-center" id="slider_price_max" readonly>
+    </label>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="theme_button small_button color1">Filter</button>
+    </div>
+  </form>
+</div>
+  </div>
+  <div class="ls">
+    <div class="widget widget_products widget_popular_entries">
+  </div>
+</div> 
+      </aside> <!-- eof aside sidebar -->
+    </div>
+  </div>
+</div>
+
+
+<footer class="page_footer ds ms">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-12 footer-block__01 to_animate decoration__line_l offset_padding_top_90 offset_padding_bottom_85" >
+        <div class="widget widget_text page-footer__logo">
+          <p class="page-footer__logo-wrapper"><img src="images/logo_bottom.png" alt=""></p>
+          <p>Suspendisse dictum porttitor bibendum. Fusce eget lacus id quam tincidunt mattis. Etiam fringilla felis rhoncus, volutpat dui nec, eleifend turpis.  Mauris posuere urna ac elementum.</p>
+        </div>
+        <div class="widget widget__payment"> 
+          <h3 class="widget__payment-title">Payment</h3>
+          <div class="big">
+            <a href="#"><i class="fa fa-cc-visa"></i></a>
+            <a href="#"><i class="fa fa-cc-mastercard"></i></a>
+            <a href="#"><i class="fa fa-cc-discover"></i></a>
+            <a href="#"><i class="fa fa-cc-amex"></i></a>
+            <a href="#"><i class="fa fa-cc-paypal"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-7 col-sm-12 footer-block__02 to_animate decoration__line_r offset_padding_top_90 offset_padding_bottom_85 horizontal_offset_padding_40">
+        <!-- mailchimp -->
+        <div class="widget widget_mailchimp">
+  <h3 class="widget_mailchimp-title">Newsletter</h3>
+  <p class="widget_mailchimp__text">Subscribe to our latest news to be updated. We promise not to spam!</p>
+  <form class="signup form-inline" action="" method="get">
+    <div class="form-group">
+      <input name="email" type="email" class="mailchimp_email form-control" placeholder="Email address">
+    </div>
+    <button type="submit" class="theme_button">Subscribe</button>
+    <div class="response"></div>
+  </form>
+</div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <!-- footer navigation -->
+            <div class="widget widget_nav_menu greylinks">
+              <h3 class="widget-title">My Account</h3>
+               <ul class="menu">
+                <li class="">
+                  <a href="#">My Account</a>
+                </li>
+                <li class="">
+                  <a href="#">My Fashion</a>
+                </li>
+                <li class="">
+                  <a href="#">Login</a>
+                </li>
+                <li class="">
+                  <a href="#">Register</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <!-- shopping guide -->
+            <div class="widget widget_nav_menu greylinks">
+              <h3 class="widget-title">Shopping Guide</h3>
+              <ul class="menu">
+                <li class="">
+                  <a href="#">Checkout</a>
+                </li>
+                <li class="">
+                  <a href="#">Cart</a>
+                </li>
+                <li class="">
+                  <a href="#">Contact Usy</a>
+                </li>
+                <li class="">
+                  <a href="#">Blog</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <!-- contact us -->
+            <div class="widget widget_nav_menu greylinks">
+              <h3 class="widget-title">Contact Us</h3>
+              <ul class="menu">
+                <li class="">
+                  <a href="#">About Us</a>
+                </li>
+                <li class="">
+                  <a href="#">Blog</a>
+                </li>
+                <li class="">
+                  <a href="#">Search</a>
+                </li>
+                <li class="">
+                  <a href="#">Sitemap</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="page_copyright ds table_section section_padding_20">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center text-lg-left">
+        <p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href=""></a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- eof #box_wrapper -->
+</div><!-- eof #canvas -->
+
+ 
+    <script src="js/compressed.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

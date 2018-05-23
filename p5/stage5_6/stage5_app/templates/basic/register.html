@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<html class="no-js">
+<head>
+  <title>Register</title>
+  <meta charset="utf-8">
+  <!--[if IE]>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <![endif]-->
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/main.css" id="color-switcher-link">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+  
+  <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+  <![endif]-->
+  
+</head>
+<body>
+  <!--[if lt IE 9]>
+      <div class="bg-danger text-center">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" class="highlight">upgrade your browser</a> to improve your experience.</div>
+  <![endif]-->
+  
+  <div class="preloader">
+    <div class="preloader_content loading">
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+      <span class="slice"></span>
+    </div>
+  </div>
+
+<!-- search modal -->
+<div class="modal" tabindex="-1" aria-labelledby="search_modal" id="search_modal">
+  <div class="widget widget_search">
+    <form method="get" class="searchform form-inline" action="">
+      <div class="form-group">
+        <input type="text" value="" name="search" class="form-control" placeholder="Search keyword" id="modal-search-input">
+      </div>
+      <button type="submit" class="theme_button">Search</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+<header class="page_header header_white floating_logo columns_padding_0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <a href="./" class="logo logo_image">
+          <img src="images/logo.png" alt="">
+        </a>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-6 text-align__right">
+        <!-- main nav start -->
+<nav class="mainmenu_wrapper">
+  <ul class="mainmenu nav sf-menu">
+    <li><a href="index.html">Home</a></li>
+	<li><a href="shop-right">Shop</a></li>
+	<li><a href="cart-right">Shopping Cart</a></li>
+	<li><a href="checkout-right">Checkout</a></li>
+	<li><a href="login">Login</a></li>
+  </ul>
+</nav>
+<!-- eof main nav -->
+        <span class="toggle_menu"><span></span></span>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="breadcrumbs-01">
+  <div class="page_breadcrumbs ls ms">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="page-breadcrumbs__wrapper">
+            <h1 class="page-breadcrumbs__title">Registration</h1>
+            <ul class="breadcrumb">
+              <li><a href="/">HomePage</a></li>
+              <li><a href="shop-right">Shop</a></li>
+              <li class="active">Registration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ls ls section_padding_top_100 section_padding_bottom_100">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-12 toggle_menu--position">
+            <div class="main-nav__wrapper page_header">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class="mainmenu nav sf-menu">
+                        {% for message in messages %}
+                            <p style="color:red">{{ message }}</p>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+      <form class="shop-register" method="POST" action="register">
+        <div class="col-sm-12">
+          <div  class="form-group validate-required" id="billing_first_name_field">
+            <label for="billing_first_name" class="control-label">
+              <span class="grey">username </span>
+              <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control " name="username" id="billing_first_name" placeholder="" value="">
+          </div>
+          <div class="form-group" id="billing_password_field">
+            <label for="billing_password" class="control-label">
+              <span class="grey">Password</span>
+              <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control " name="password" id="billing_password" placeholder="" value="">
+          </div>
+          <div class="form-group" id="billing_password2_field">
+            <label for="billing_password2" class="control-label">
+              <span class="grey">Confirm Password</span>
+              <span class="required">*</span>
+            </label>
+            <input type="text" class="form-control " name="password2" id="billing_password2" placeholder="" value="">
+          </div>
+        <div class="col-sm-12">
+          <button type="submit" class="theme_button wide_button color1">Register Now</button>
+          <button type="reset" class="theme_button wide_button">Clear Form</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="page_footer ds ms">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-12 footer-block__01 to_animate decoration__line_l offset_padding_top_90 offset_padding_bottom_85" >
+        <div class="widget widget_text page-footer__logo">
+          <p class="page-footer__logo-wrapper"><img src="images/logo_bottom.png" alt=""></p>
+          <p>Suspendisse dictum porttitor bibendum. Fusce eget lacus id quam tincidunt mattis. Etiam fringilla felis rhoncus, volutpat dui nec, eleifend turpis.  Mauris posuere urna ac elementum.</p>
+        </div>
+        <div class="widget widget__payment"> 
+          <h3 class="widget__payment-title">Payment</h3>
+          <div class="big">
+            <a href="#"><i class="fa fa-cc-visa"></i></a>
+            <a href="#"><i class="fa fa-cc-mastercard"></i></a>
+            <a href="#"><i class="fa fa-cc-discover"></i></a>
+            <a href="#"><i class="fa fa-cc-amex"></i></a>
+            <a href="#"><i class="fa fa-cc-paypal"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-7 col-sm-12 footer-block__02 to_animate decoration__line_r offset_padding_top_90 offset_padding_bottom_85 horizontal_offset_padding_40">
+        <!-- mailchimp -->
+        <div class="widget widget_mailchimp">
+  <h3 class="widget_mailchimp-title">Newsletter</h3>
+  <p class="widget_mailchimp__text">Subscribe to our latest news to be updated. We promise not to spam!</p>
+  <form class="signup form-inline" action="" method="get">
+    <div class="form-group">
+      <input name="email" type="email" class="mailchimp_email form-control" placeholder="Email address">
+    </div>
+    <button type="submit" class="theme_button">Subscribe</button>
+    <div class="response"></div>
+  </form>
+</div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <!-- footer navigation -->
+            <div class="widget widget_nav_menu greylinks">
+              <h3 class="widget-title">My Account</h3>
+               <ul class="menu">
+                <li class="">
+                  <a href="#">My Account</a>
+                </li>
+                <li class="">
+                  <a href="#">My Fashion</a>
+                </li>
+                <li class="">
+                  <a href="#">Login</a>
+                </li>
+                <li class="">
+                  <a href="#">Register</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <!-- shopping guide -->
+            <div class="widget widget_nav_menu greylinks">
+              <h3 class="widget-title">Shopping Guide</h3>
+              <ul class="menu">
+                <li class="">
+                  <a href="#">Checkout</a>
+                </li>
+                <li class="">
+                  <a href="#">Cart</a>
+                </li>
+                <li class="">
+                  <a href="#">Contact Usy</a>
+                </li>
+                <li class="">
+                  <a href="#">Blog</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <!-- contact us -->
+            <div class="widget widget_nav_menu greylinks">
+              <h3 class="widget-title">Contact Us</h3>
+              <ul class="menu">
+                <li class="">
+                  <a href="#">About Us</a>
+                </li>
+                <li class="">
+                  <a href="#">Blog</a>
+                </li>
+                <li class="">
+                  <a href="#">Search</a>
+                </li>
+                <li class="">
+                  <a href="#">Sitemap</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="page_copyright ds table_section section_padding_20">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center text-lg-left">
+        <p>Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- eof #box_wrapper -->
+</div><!-- eof #canvas -->
+
+ 
+    <script src="js/compressed.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
